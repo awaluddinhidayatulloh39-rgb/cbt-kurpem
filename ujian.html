@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembar Ujian - CBT Kurpem</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: #007bff; color: white; padding: 15px 20px; border-radius: 8px; }
+        .timer { font-weight: bold; font-size: 18px; background: #dc3545; padding: 5px 12px; border-radius: 5px; }
+        .card { background: white; padding: 25px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .option { margin: 10px 0; display: block; cursor: pointer; }
+        .btn-nav { margin-top: 20px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .btn-nav:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>CBT Kurpem - Ujian Bahasa Indonesia</h2>
+        <div class="timer">Sisa Waktu: <span id="waktu">10:00</span></div>
+    </div>
+
+    <div class="card">
+        <h3>Soal No. 1</h3>
+        <p>Apa fungsi utama dari sistem CBT (Computer Based Test) dalam pelaksanaan ujian sekolah?</p>
+        
+        <label class="option"><input type="radio" name="soal1" value="A"> A. Mempercepat proses pemeriksaan dan efisiensi kertas</label>
+        <label class="option"><input type="radio" name="soal1" value="B"> B. Menambah biaya operasional sekolah</label>
+        <label class="option"><input type="radio" name="soal1" value="C"> C. Menyulitkan siswa dalam menjawab</label>
+        <label class="option"><input type="radio" name="soal1" value="D"> D. Menggantikan peran guru sepenuhnya</label>
+
+        <button class="btn-nav" onclick="simpanJawaban()">Simpan & Lanjut</button>
+    </div>
+
+    <script>
+        // Simulasi hitung mundur (10 menit)
+        let waktuSisa = 600; 
+        const displayWaktu = document.getElementById('waktu');
+
+        const hitungMundur = setInterval(() => {
+            let menit = Math.floor(waktuSisa / 60);
+            let detik = waktuSisa % 60;
+            detik = detik < 10 ? '0' + detik : detik;
+            displayWaktu.textContent = `${menit}:${detik}`;
+            
+            if (waktuSisa <= 0) {
+                clearInterval(hitungMundur);
+                alert("Waktu ujian telah habis!");
+            }
+            waktuSisa--;
+        }, 1000);
+
+        function simpanJawaban() {
+            alert("Jawaban disimpan!");
+        }
+    </script>
+
+</body>
+</html>
